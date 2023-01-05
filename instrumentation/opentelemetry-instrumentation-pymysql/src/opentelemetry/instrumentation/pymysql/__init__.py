@@ -67,7 +67,7 @@ class PyMySQLInstrumentor(BaseInstrumentor):
         https://github.com/PyMySQL/PyMySQL/
         """
         tracer_provider = kwargs.get("tracer_provider")
-
+        capture_parameters = kwargs.get("capture_parameters")
         dbapi.wrap_connect(
             __name__,
             pymysql,
@@ -76,6 +76,7 @@ class PyMySQLInstrumentor(BaseInstrumentor):
             _CONNECTION_ATTRIBUTES,
             version=__version__,
             tracer_provider=tracer_provider,
+            capture_parameters=capture_parameters
         )
 
     def _uninstrument(self, **kwargs):
